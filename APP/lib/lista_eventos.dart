@@ -1,14 +1,8 @@
 import 'package:flutter/material.dart';
-import 'lista_eventos.dart';
 import 'evento.dart';
-import 'perfil.dart';
 
-void main() {
-  runApp(const MaterialApp(title: 'Navigation Basics', home: TelaPrincipal()));
-}
-
-class TelaPrincipal extends StatelessWidget {
-  const TelaPrincipal({super.key});
+class ListaEventos extends StatelessWidget {
+  const ListaEventos({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -22,166 +16,148 @@ class TelaPrincipal extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(' Categorias',
+              Container(
+                  alignment: Alignment.bottomLeft,
+                  padding: const EdgeInsets.only(top: 25.0, left: 10.0, right: 10.0, bottom: 25.0),
+                  child: Text('Eventos da categoria',
                       style: TextStyle(
                         color: Colors.grey.shade900,
-                        fontSize: 30,
+                        fontSize: 25,
                         fontWeight: FontWeight.bold,
-                      )),
-                  IconButton(
-                      onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => const Perfil()),
-                        );
-                      },
-                      icon: Icon(Icons.person_outline,
-                          color: Colors.black,
-                          size: 30.0
-                      ))
-                ],
-              ),
+                      ))),
               OutlinedButton(
-                style:
-                    ElevatedButton.styleFrom(fixedSize: const Size(375, 120)),
+                style: ElevatedButton.styleFrom(
+                    fixedSize: const Size(375, 120)),
                 child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Icon(
-                        Icons.pets_outlined,
+                        Icons.add_photo_alternate_outlined,
                         color: Colors.lightGreen.shade200,
                         size: 70.0,
                       ),
-                      Text(
-                        'Animais',
+                      Text('Exemplo1\n'
+                          'ONG A\n '
+                          'São Paulo - SP',
                         textAlign: TextAlign.right,
                         style: TextStyle(
                           color: Colors.black,
-                          fontSize: 20,
-                        ),
-                      )
+                          fontSize: 15,
+                        ),)
                     ]),
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(
-                        builder: (context) => const ListaEventos()),
+                    MaterialPageRoute(builder: (context) => const Evento()),
                   );
                 },
               ),
               OutlinedButton(
-                style:
-                    ElevatedButton.styleFrom(fixedSize: const Size(375, 120)),
+                style: ElevatedButton.styleFrom(
+                    fixedSize: const Size(375, 120)),
                 child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Icon(
-                        Icons.local_hospital_rounded,
-                        color: Colors.lightGreen.shade200,
-                        size: 70.0,
-                      ),
-                      Text(
-                        'Hospital',
+                      Image.network(
+                          'https://www.maricopa.gov/ImageRepository/Document?documentId=77037',
+                          fit: BoxFit.cover),
+                      Text('Feira de Adoção\n'
+                          'ONG Patinhas\n '
+                          'São Paulo - SP',
                         textAlign: TextAlign.right,
                         style: TextStyle(
                           color: Colors.black,
-                          fontSize: 20,
-                        ),
-                      )
+                          fontSize: 15,
+
+                        ),)
                     ]),
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(
-                        builder: (context) => const ListaEventos()),
+                    MaterialPageRoute(builder: (context) => const Evento()),
                   );
                 },
               ),
               OutlinedButton(
-                style:
-                    ElevatedButton.styleFrom(fixedSize: const Size(375, 120)),
+                style: ElevatedButton.styleFrom(
+                    fixedSize: const Size(375, 120)),
                 child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Icon(
-                        Icons.escalator_warning_outlined,
+                        Icons.add_photo_alternate_outlined,
                         color: Colors.lightGreen.shade200,
                         size: 70.0,
                       ),
-                      Text(
-                        'Crianças',
+                      Text('Exemplo2\n'
+                          'ONG B\n '
+                          'São Paulo - SP',
                         textAlign: TextAlign.right,
                         style: TextStyle(
                           color: Colors.black,
-                          fontSize: 20,
-                        ),
-                      )
+                          fontSize: 15,
+                        ),)
                     ]),
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(
-                        builder: (context) => const ListaEventos()),
+                    MaterialPageRoute(builder: (context) => const Evento()),
                   );
                 },
               ),
               OutlinedButton(
-                style:
-                    ElevatedButton.styleFrom(fixedSize: const Size(375, 120)),
+                style: ElevatedButton.styleFrom(
+                    fixedSize: const Size(375, 120)),
                 child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Icon(
-                        Icons.restore_from_trash,
+                        Icons.add_photo_alternate_outlined,
                         color: Colors.lightGreen.shade200,
                         size: 70.0,
                       ),
-                      Text(
-                        'Coleta de Lixo',
+                      Text('Exemplo3\n'
+                          'ONG C\n '
+                          'São Paulo - SP',
                         textAlign: TextAlign.right,
                         style: TextStyle(
                           color: Colors.black,
-                          fontSize: 20,
-                        ),
-                      )
+                          fontSize: 15,
+
+                        ),)
                     ]),
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(
-                        builder: (context) => const ListaEventos()),
+                    MaterialPageRoute(builder: (context) => const Evento()),
                   );
                 },
               ),
               OutlinedButton(
-                style:
-                    ElevatedButton.styleFrom(fixedSize: const Size(375, 120)),
+                style: ElevatedButton.styleFrom(
+                    fixedSize: const Size(375, 120)),
                 child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Icon(
-                        Icons.elderly,
+                        Icons.add_photo_alternate_outlined,
                         color: Colors.lightGreen.shade200,
                         size: 70.0,
                       ),
-                      Text(
-                        'Idosos',
+                      Text('Exemplo4\n'
+                          'ONG D\n '
+                          'São Paulo - SP',
                         textAlign: TextAlign.right,
                         style: TextStyle(
                           color: Colors.black,
-                          fontSize: 20,
-                        ),
-                      )
+                          fontSize: 15,
+
+                        ),)
                     ]),
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(
-                        builder: (context) => const ListaEventos()),
+                    MaterialPageRoute(builder: (context) => const Evento()),
                   );
                 },
               )

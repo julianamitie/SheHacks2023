@@ -1,128 +1,172 @@
 import 'package:flutter/material.dart';
+import 'evento.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(const MaterialApp(title: 'Navigation Basics', home: TelaPrincipal()));
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class TelaPrincipal extends StatelessWidget {
+  const TelaPrincipal({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
-      home: Scaffold(
-          appBar: AppBar(
-            centerTitle: true,
-            title: Text('ONG Patinhas'),
-            backgroundColor: Colors.lightGreen.shade400,
-          ),
-          body: Container(
-              color: Colors.grey.shade100,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Container(
-                    height: 230,
-                    width: MediaQuery.of(context).size.width,
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.only(
-                            topRight: Radius.circular(0.0),
-                            bottomRight: Radius.circular(30.0),
-                            topLeft: Radius.circular(0.0),
-                            bottomLeft: Radius.circular(30.0)),
-                        color: Colors.lightGreen.shade100),
-                    child: Image.network(
-                        'https://www.maricopa.gov/ImageRepository/Document?documentId=77037',
-                        fit: BoxFit.cover),
-                  ),
-                  Container(
-                      alignment: Alignment.bottomLeft,
-                      padding: const EdgeInsets.only(left: 10.0, right: 10.0),
-                      height: 50,
-                      child: Text('ONG Patinhas',
-                          style: TextStyle(
-                            color: Colors.grey.shade900,
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold,
-                          ))),
-                  Container(
-                      alignment: Alignment.topLeft,
-                      padding: const EdgeInsets.only(
-                          left: 10.0, right: 10.0, bottom: 10.0),
-                      child: Text('Feira de Adoção',
-                          style: TextStyle(
-                            color: Colors.grey.shade900,
-                            fontSize: 30,
-                            fontWeight: FontWeight.bold,
-                          ))),
-                  Container(
-                      alignment: Alignment.topLeft,
-                      padding: const EdgeInsets.only(
-                          left: 10.0, right: 10.0, bottom: 10.0),
-                      child: Text(
-                          'Procuramos voluntários para auxiliar '
-                          'na nossa feira de adoção de gatos e cachorros, '
-                          'especificamente na área de registros e comunicação.',
-                          style: TextStyle(
-                            color: Colors.grey.shade900,
-                            fontSize: 15
-                          ))),
-                  Container(
-                      alignment: Alignment.topLeft,
-                      padding: const EdgeInsets.only(
-                          left: 10.0, right: 10.0, top: 10.0),
-                      child: Row(
-                        children: [
-                          Icon(
-                            Icons.calendar_month,
-                            color: Colors.lightGreen.shade600,
-                            size: 23.0,
-                          ),
-                          Text(' Data: 11 de novembro, 2023',
-                              style: TextStyle(
-                                color: Colors.grey.shade900,
-                                fontSize: 20,
-                                fontWeight: FontWeight.bold,
-                              ))
-                        ],
-                      )),
-                  Container(
-                      alignment: Alignment.topLeft,
-                      padding: const EdgeInsets.only(
-                          left: 10.0, right: 10.0, top: 5.0, bottom: 25.0),
-                      child: Row(
-                        children: [
-                          Icon(
-                            Icons.pin_drop,
-                            color: Colors.lightGreen.shade600,
-                            size: 23.0,
-                          ),
-                          Text(' Rua Garção Tinoco, 62, 02402020',
-                              style: TextStyle(
-                                color: Colors.grey.shade900,
-                                fontSize: 20,
-                                fontWeight: FontWeight.bold,
-                              ))
-                        ],
-                      )),
-                  ElevatedButton(
-                      onPressed: () {},
-                      style: ElevatedButton.styleFrom(
-                          fixedSize: const Size(375, 50),
-                          backgroundColor: Colors.lightGreen.shade400),
-                      child: const Text('Inscreva-se',
+    return Scaffold(
+        appBar: AppBar(
+          centerTitle: true,
+          title: Text('Voluntree'),
+          backgroundColor: Colors.lightGreen.shade400,
+        ),
+        body: Center(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Container(
+                  alignment: Alignment.bottomLeft,
+                  padding: const EdgeInsets.only(top: 25.0, left: 10.0, right: 10.0, bottom: 25.0),
+                  child: Text('Eventos da categoria',
                       style: TextStyle(
+                        color: Colors.grey.shade900,
+                        fontSize: 25,
                         fontWeight: FontWeight.bold,
-                        color: Colors.white,
-                        fontSize: 20
-                      ),))
-                ],
-              ))),
-    );
+                      ))),
+              OutlinedButton(
+                style: ElevatedButton.styleFrom(
+                    fixedSize: const Size(375, 120)),
+                child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Icon(
+                        Icons.add_photo_alternate_outlined,
+                        color: Colors.lightGreen.shade200,
+                        size: 70.0,
+                      ),
+                      Text('Exemplo1\n'
+                          'ONG A\n '
+                          'São Paulo - SP',
+                        textAlign: TextAlign.right,
+                        style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 15,
+                        ),)
+                ]),
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const Evento()),
+                  );
+                },
+              ),
+              OutlinedButton(
+                style: ElevatedButton.styleFrom(
+                    fixedSize: const Size(375, 120)),
+                child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Image.network(
+                          'https://www.maricopa.gov/ImageRepository/Document?documentId=77037',
+                          fit: BoxFit.cover),
+                      Text('Feira de Adoção\n'
+                          'ONG Patinhas\n '
+                          'São Paulo - SP',
+                        textAlign: TextAlign.right,
+                        style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 15,
+
+                        ),)
+                    ]),
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const Evento()),
+                  );
+                },
+              ),
+              OutlinedButton(
+                style: ElevatedButton.styleFrom(
+                    fixedSize: const Size(375, 120)),
+                child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Icon(
+                        Icons.add_photo_alternate_outlined,
+                        color: Colors.lightGreen.shade200,
+                        size: 70.0,
+                      ),
+                      Text('Exemplo2\n'
+                          'ONG B\n '
+                          'São Paulo - SP',
+                        textAlign: TextAlign.right,
+                        style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 15,
+                        ),)
+                    ]),
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const Evento()),
+                  );
+                },
+              ),
+              OutlinedButton(
+                style: ElevatedButton.styleFrom(
+                    fixedSize: const Size(375, 120)),
+                child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Icon(
+                        Icons.add_photo_alternate_outlined,
+                        color: Colors.lightGreen.shade200,
+                        size: 70.0,
+                      ),
+                      Text('Exemplo3\n'
+                          'ONG C\n '
+                          'São Paulo - SP',
+                        textAlign: TextAlign.right,
+                        style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 15,
+
+                        ),)
+                    ]),
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const Evento()),
+                  );
+                },
+              ),
+              OutlinedButton(
+                style: ElevatedButton.styleFrom(
+                    fixedSize: const Size(375, 120)),
+                child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Icon(
+                        Icons.add_photo_alternate_outlined,
+                        color: Colors.lightGreen.shade200,
+                        size: 70.0,
+                      ),
+                      Text('Exemplo4\n'
+                          'ONG D\n '
+                          'São Paulo - SP',
+                        textAlign: TextAlign.right,
+                        style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 15,
+
+                        ),)
+                    ]),
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const Evento()),
+                  );
+                },
+              )
+            ],
+          ),
+        ));
   }
 }
